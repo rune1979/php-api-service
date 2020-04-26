@@ -1,0 +1,299 @@
+* {
+box-sizing:border-box;
+font-family:BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+font-size:15px;
+-webkit-font-smoothing:antialiased;
+/*-moz-osx-font-smoothing:grayscale;*/
+}
+
+body {
+background-color:#435165;
+}
+
+.form_container {
+display:flex;
+width:720px;
+margin:0 350px auto;
+}
+.form_description {
+float:right;
+width:200px;
+background-color:#ccc;
+box-shadow:0 0 9px 0 rgba(0,0,0,0.3);
+margin:0 auto;
+padding:4px 15px;
+color:#222;
+}
+
+.formula {
+display:block;
+width:500px;
+background-color:#fff;
+box-shadow:0 0 9px 0 rgba(0,0,0,0.3);
+margin: 5px auto;
+padding:4px 15px;
+align-items:center;
+}
+
+.formula form label {
+display:flex;
+justify-content:center;
+align-items:center;
+width:150px;
+height:30px;
+background-color:#3274d6;
+color:#fff;
+padding:4px 15px;
+margin:8px 0 2px 2px;
+}
+.formula .setup label {
+display:inline-block;
+justify-content:center;
+align-items:center;
+width:350px;
+height:30px;
+background-color:#3274d6;
+color:#fff;
+padding:7px 8px;
+}
+.formula .setup i{
+justify-content:center;
+font-size:15px;
+border:1px solid #dee0e4;
+width:31px;
+height:30px;
+display:inline-block;
+/*margin:0px 0 20px 10px;*/
+padding:7px 8px;
+}
+.formula form input[type="password"],.formula form input[type="text"],.formula form select,.formula form input[type="checkbox"],.formula form i {
+justify-content:left;
+font-size:15px;
+border:1px solid #dee0e4;
+width:300px;
+height:30px;
+display:block;
+margin:8px 0 10px 10px;
+padding:4px 15px;
+}
+
+.formula form input[type="submit"]:hover {
+background-color:#2868c7;
+transition:background-color .2s;
+}
+
+.login {
+width:400px;
+background-color:#fff;
+box-shadow:0 0 9px 0 rgba(0,0,0,0.3);
+margin:100px auto;
+}
+
+.login form label {
+display:flex;
+justify-content:center;
+align-items:center;
+width:50px;
+height:50px;
+background-color:#3274d6;
+color:#fff;
+}
+
+.login form input[type="password"],.login form input[type="text"] {
+width:310px;
+height:50px;
+border:1px solid #dee0e4;
+margin-bottom:20px;
+padding:0 15px;
+}
+
+.login form input[type="submit"]:hover {
+background-color:#2868c7;
+transition:background-color .4s;
+}
+
+.navtop {
+background-color:#47632e; /*#2f3947 old*/
+height:60px;
+width:100%;
+border:0;
+}
+
+.navtop div {
+display:flex;
+width:98%;
+height:100%;
+margin:0 auto;
+}
+
+.navtop div h1,.navtop div a {
+display:inline-flex;
+align-items:center;
+}
+
+.navtop div h1 {
+flex:1;
+font-size:24px;
+color:#eaebed;
+font-weight:400;
+margin:0;
+padding:0;
+}
+
+.navtop div a {
+text-decoration:none;
+color:#c1c4c8;
+font-weight:700;
+padding:0 15px;
+}
+
+.navtop div a i {
+padding:2px 8px 0 0;
+}
+
+.navtop div a:hover {
+color:#eaebed;
+}
+
+.head {
+display:flex;
+width:100%;
+margin:0 1px auto;
+}
+
+.headblocks {
+flex:33%;
+font-size:24px;
+border-bottom:1px solid #e0e0e3;
+color:#47632e;
+padding:15px 10px;
+}
+
+.headblocks a {
+font-size:18px;
+text-decoration:none;
+font-weight:700;
+color:#3274d6;
+}
+
+.headblocks form {
+display:flex;
+flex-wrap:wrap;
+flex-flow:row wrap;
+justify-content:left;
+align-items:flex-start;
+padding-top:0;
+}
+
+.headblocks form input {
+display:inline;
+background-color:#fff;
+border:1px solid #ddd;
+}
+
+.headblocks form input[type="submit"] {
+background-color:#3274d6;
+border:0;
+cursor:pointer;
+font-weight:700;
+color:#fff;
+transition:background-color .4s;
+}
+
+.headblocks form input[type="submit"]:hover {
+background-color:#2868c7;
+transition:background-color .5s;
+}
+
+.notion {
+display:block;
+width:95%;
+font-size:25px;
+color:#3295d6;
+font-weight:700;
+text-align:center;
+margin:50px auto;
+}
+
+body.loggedin {
+background-color:#f3f4f7;
+}
+
+.foot {
+display:block;
+width:95%;
+font-size:15px;
+color:#4a536e;
+font-weight:400;
+text-align:center;
+margin:100px auto;
+}
+
+.listing {
+margin:0 auto;
+}
+
+.listing table {
+border-collapse:collapse;
+width:100%;
+}
+
+.listing th,td {
+text-align:left;
+padding:8px;
+}
+
+.listing tr:nth-child(even) {
+background-color:#fff;
+}
+
+.listing th {
+background-color:#47632e;
+color:#FFF;
+}
+
+.listing h3 {
+color:#47632e;
+padding-left:8px;
+}
+
+a {
+color:#3274d6;
+}
+
+.formula h1,.login h1 {
+text-align:center;
+color:#5b6574;
+font-size:24px;
+border-bottom:1px solid #dee0e4;
+padding:20px 0;
+}
+
+.formula form,.login form {
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+padding-top:20px;
+}
+
+.formula form input[type="submit"],.login form input[type="submit"] {
+width:100%;
+margin-top:20px;
+background-color:#3274d6;
+border:0;
+cursor:pointer;
+font-weight:700;
+color:#fff;
+transition:background-color .2s;
+padding:15px;
+}
+
+.headblocks a:hover,a:hover {
+color:#32a4d6;
+}
+
+@media screen and (max-width: 600px){
+.headblocks {
+width:100%;
+}
+}
