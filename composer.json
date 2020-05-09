@@ -13,6 +13,11 @@
   "require-dev": {
     "phpunit/phpunit": "^7.3"
   },
+  "autoload": {
+    "classmap": [
+      "api"
+    ]
+  },
   "scripts": {
     "test": "phpunit"
   },

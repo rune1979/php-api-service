@@ -17,7 +17,7 @@
 
     <filter>
         <whitelist>
-            <directory suffix=".php">./adm-g2</directory>
+            <directory suffix=".php">./api</directory>
         </whitelist>
     </filter>
 </phpunit>
