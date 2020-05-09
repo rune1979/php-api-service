@@ -11,7 +11,7 @@
         stopOnFailure="false">
     <testsuites>
         <testsuite name="PHP API Service">
-            <directory suffix=".php">./api</directory>
+            <directory suffix=".php">./inc</directory>
         </testsuite>
     </testsuites>
 
