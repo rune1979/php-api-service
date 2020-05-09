@@ -1,31 +1,19 @@
-# Config file for https://travis-ci.org/
-
 language: php
-
-# Define the php versions against we want to test our code
 php:
-- 6.2
-- 7.2
-
-# Note: Code coverage requires php-xDebug extension enabled on CI server
-
+  - 7.0
+services:
+  - mysql
+env:
+  global:
+    - APP_ENV: production
+    - DB_USERNAME: root
+    - DB_DATABASE: db_name_to_change
+    - DB_PASSWORD:
+before_install:
+  - mysql -e travis_db_setup.sql
 install:
-- travis_retry composer install --no-interaction --no-suggest
-
-# Testing the app (see phpunit.xml) for configs, generating Code Coverage report
-script:
-- composer test -- --coverage-clover=coverage.xml
-
-#after_script:
-
-#after_failure:
-
-# Monitor only these branches
-branches:
-  only:
-  - travis
-
-# You can delete the cache using travis-ci web interface
-cache:
-  directories:
-  - $HOME/.composer/cache
+  - travis_retry composer install --no-interaction --prefer-dist --no-suggest
+  - nvm install 5.10.1
+before_script:
+  - gulp build
+script: vendor/bin/phpunit
