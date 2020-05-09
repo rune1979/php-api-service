@@ -10,7 +10,7 @@ env:
     - DB_DATABASE: db_name_to_change
     - DB_PASSWORD:
 before_install:
-  - mysql -e 'Create db'
+  - mysql -e "create database IF NOT EXISTS db_name_to_change;"
 install:
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
   - nvm install 5.10.1
