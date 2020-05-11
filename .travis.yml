@@ -2,9 +2,9 @@ language: php
 php:
   - 7.0
   - 7.3
-before_script:
-  - mysql -u root -e 'CREATE DATABASE testbase;'
-  - mysql -u root testbase < tests/testbase.sql
+# before_script:
+#   - mysql -u root -e 'CREATE DATABASE testbase;'
+#   - mysql -u root testbase < tests/testbase.sql
 install:
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
   - nvm install 5.10.1
