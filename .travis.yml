@@ -2,19 +2,18 @@ language: php
 php:
   - 7.0
   - 7.3
-services:
-  - mysql
-env:
-  global:
-    - APP_ENV: production
-    - DB_USERNAME: root
-    - DB_DATABASE: db_name_to_change
-    - DB_PASSWORD:
-before_install:
-  - mysql -e "create database IF NOT EXISTS db_name_to_change;"
+before_script:
+  - mysql -u root -e 'CREATE DATABASE testbase;'
+  - mysql -u root testbase < tests/testbase.sql
 install:
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
   - nvm install 5.10.1
 
+# Testing the app (see phpunit.xml) for configs, generating Code Coverage report
 script:
-  - phpunit
+- composer test -- --coverage-clover=coverage.xml
+
+# You can delete the cache using travis-ci web interface
+cache:
+  directories:
+  - $HOME/.composer/cache
