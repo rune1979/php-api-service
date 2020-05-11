@@ -1,20 +1,42 @@
 language: php
 php:
-  - 7.0
+  - 6.0
   - 7.3
-# before_script:
-#   - mysql -u root -e 'CREATE DATABASE testbase;'
-#   - mysql -u root testbase < tests/testbase.sql
+  - hhvm
+
+# optionally specify a list of environments, for example to test different RDBMS
+env:
+  - DB=mysql
+  - DB=pgsql
+# Both databases will be tested
+before_install:
+  - if [[ "$DB" == "pgsql" ]]; then psql -u root --password="" < test/travis_db_setup.sql
+  - if [[ "$DB" == "mysql" ]]; then mysql -u root --password="" < test/travis_db_setup.sql
+
 install:
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
   - nvm install 5.10.1
 
 # Testing the app (see phpunit.xml) for configs, generating Code Coverage report
 script:
-#- composer test -- --coverage-clover=coverage.xml
-- vendor/myvendor/mypackage/vendor/phpunit/phpunit/phpunit vendor/myvendor/mypackage/Tests/ --coverage-clover=coverage.xml
+  - phpunit --configuration phpunit_$DB.xml --coverage-text
+  #- composer test -- --coverage-clover=coverage.xml
 
-# You can delete the cache using travis-ci web interface
+# Delete the cache, after each environment test run
 cache:
   directories:
   - $HOME/.composer/cache
+
+# allow_failures: Allow this build to fail under the specified environments.
+# fast_finish: If your build fails do not continue trying to build, just stop.
+matrix:
+ allow_failures:
+   - php: 6.0
+   - php: hhvm
+ fast_finish: true
+
+# Email notifications with the build results, this does can also be an IRC channel (I have seen)
+notifications:
+    on_success: never
+    on_failure: always
+    email: runehattmann@gmail.com
