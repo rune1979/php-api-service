@@ -15,8 +15,8 @@ install:
 
 # Testing the app (see phpunit.xml) for configs, generating Code Coverage report
 script:
-  - phpunit --configuration phpunit_$DB.xml --coverage-text
-  #- composer test -- --coverage-clover=coverage.xml
+  #- phpunit --configuration phpunit_$DB.xml --coverage-text
+  - composer test -- --coverage-clover=coverage.xml
 
 # Delete the cache, after each environment test run
 cache:
