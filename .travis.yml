@@ -4,14 +4,10 @@ php:
   - 7.3
   - hhvm
 
-# optionally specify a list of environments, for example to test different RDBMS
-env:
-  - DB=mysql
-  - DB=pgsql
-# Both databases will be tested
+services:
+  - mysql
 before_install:
-  - if [[ "$DB" == "pgsql" ]]; then psql -u root --password="" < travis_db_setup.sql
-  - if [[ "$DB" == "mysql" ]]; then mysql -u root --password="" < travis_db_setup.sql
+  - mysql -u root --password="" < travis_db_setup.sql
 
 install:
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
