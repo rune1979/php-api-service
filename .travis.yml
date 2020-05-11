@@ -9,6 +9,13 @@ services:
 before_install:
   - mysql -u root --password="" < travis_db_setup.sql
 
+env: # Global environment variables to use
+  global:
+    - APP_ENV: production
+    - DB_USERNAME: root
+    - DB_DATABASE: db_name_to_change
+    - DB_PASSWORD:
+
 install:
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
   - nvm install 5.10.1
