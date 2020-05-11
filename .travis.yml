@@ -16,4 +16,5 @@ install:
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
   - nvm install 5.10.1
 
-script: phpunit
+script:
+  - phpunit
