@@ -10,8 +10,8 @@ env:
   - DB=pgsql
 # Both databases will be tested
 before_install:
-  - if [[ "$DB" == "pgsql" ]]; then psql -u root --password="" < test/travis_db_setup.sql
-  - if [[ "$DB" == "mysql" ]]; then mysql -u root --password="" < test/travis_db_setup.sql
+  - if [[ "$DB" == "pgsql" ]]; then psql -u root --password="" < travis_db_setup.sql
+  - if [[ "$DB" == "mysql" ]]; then mysql -u root --password="" < travis_db_setup.sql
 
 install:
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
