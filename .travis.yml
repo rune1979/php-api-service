@@ -2,6 +2,7 @@ language: php
 php:
   - 6.0
   - 7.3
+  - 7.0
   - hhvm
 
 services:
@@ -22,8 +23,7 @@ install:
 
 # Testing the app (see phpunit.xml) for configs, generating Code Coverage report
 script:
-  #- phpunit --configuration phpunit_$DB.xml --coverage-text
-  - composer test -- --coverage-clover=phpunit.xml.dist
+  - composer test -- --coverage-clover=coverage.xml
 
 # Delete the cache, after each environment test run
 cache:
