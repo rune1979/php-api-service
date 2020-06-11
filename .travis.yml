@@ -1,42 +1,50 @@
-language: php
-php:
-  - 6.0
-  - 7.3
+# Defines the language to use/test.
+language: php 
+# the versions of the specified languages to test the code on
+php: 
   - 7.0
+  - 7.3
+  - 5.6
   - hhvm
 
-services:
+# Aditional servises to run Redis, MySQL etc.
+services: 
   - mysql
+  
+# Import of our database scheme
 before_install:
-  - mysql -u root --password="" < travis_db_setup.sql
+  - mysql -u root --password="" < travis_db_setup.sql  
 
-env: # Global environment variables to use
+# Different environment to run on the virtal machine, one virtual environment with MySQL and one with PostgreSQL .ex. But, for simplicity sake we just run one environment, but set some global variables instead. (The different versions of PHP is still run in separate environments)
+env:
   global:
     - APP_ENV: production
     - DB_USERNAME: root
     - DB_DATABASE: db_name_to_change
     - DB_PASSWORD:
 
+# We use PHP Composer to fetch all necessary libraries and dependencies and nvm for hhvm (HipHop Virtual Machine for PHP)
 install:
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
   - nvm install 5.10.1
 
-# Testing the app (see phpunit.xml) for configs, generating Code Coverage report
+# In the composer.json file we tell Composer to use UnitPHP as our test framework. 
 script:
   - composer test -- --coverage-clover=coverage.xml
-
+  
 # Delete the cache, after each environment test run
 cache:
   directories:
   - $HOME/.composer/cache
 
+# nice thing to have is the ability to ignore failure under certain circumstances. As Example Our script fails under PHP 6.0 and hhvm, but we want it to successed under 7.X
 # allow_failures: Allow this build to fail under the specified environments.
 # fast_finish: If your build fails do not continue trying to build, just stop.
 matrix:
  allow_failures:
    - php: 6.0
    - php: hhvm
- fast_finish: true
+ fast_finish: true  
 
 # Email notifications with the build results, this does can also be an IRC channel (I have seen)
 notifications:
